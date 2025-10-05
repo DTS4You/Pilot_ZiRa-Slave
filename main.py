@@ -1,16 +1,13 @@
 ######################################################
 ### Projekt: Pilot ZiRa                            ###
-### Version: Master                                ###
+### Version: Slave                                 ###
 ### Datum  : 05.10.2025                            ###
 ######################################################
 #from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
 from time import sleep                                                 # type: ignore
 
-
-time_on    = 0.3
-time_off   = 0.4
-time_pause = 1.5
+TIME_LOOP = 0.3
 
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
@@ -18,14 +15,14 @@ time_pause = 1.5
 
 def main():
 
-    print("=== Start Main ===")
+    print("=== Main ===")
     
     try:
         print("Start Main Loop")
  
         while (True):
             
-            sleep(time_pause)
+            sleep(TIME_LOOP)
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
@@ -43,8 +40,9 @@ def main():
 
 if __name__ == "__main__":
 
+    print("=== Pilot-ZiRa-Slave ===")
     if MyModule.inc_i2c:
-        print("I2C_MCP23017 -> Load-Module")
+        print("Wird geladen -> Modul I2C")
         import libs.module_i2c as MyGPIO
         #print("I2C -> Setup")
         MyGPIO.i2c_setup()
@@ -54,10 +52,10 @@ if __name__ == "__main__":
         time.sleep(0.5)
         MyGPIO.i2c_write(0,False)
     else:
-        print("I2C_MCP23017 -> nicht vorhanden")
+        print("Nicht genutzt -> Modul I2C")
 
     if MyModule.inc_ws2812:
-        print("WS2812 -> Load-Module")
+        print("Wird geladen -> Modul WS2812")
         import libs.module_ws2812_v2 as MyWS2812         # Modul WS2812  -> WS2812-Ansteuerung
         #print("WS2812 -> Setup")
         MyWS2812.setup_ws2812()
@@ -69,7 +67,7 @@ if __name__ == "__main__":
         #print("WS2812 -> Dot-Test")
         #MyWS2812.do_dot_test()
     else:
-        print("WS2812 -> nicht vorhanden")
+        print("Nicht genutzt -> Modul WS2812")
 
     if MyModule.inc_decoder:
         print("Decode -> Load-Module")
@@ -97,6 +95,6 @@ if __name__ == "__main__":
 
 # Normal sollte das Programm hier nie ankommen !
 print("___ End of Programm ___")
-print("§§§> !!! STOP !!! <§§§")
+print("--> !!! STOP !!! <---")
 
 # ##############################################################################
