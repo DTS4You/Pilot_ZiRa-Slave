@@ -5,7 +5,7 @@
 ######################################################
 #from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
-import time                                                 # type: ignore
+from time import sleep                                                 # type: ignore
 
 
 time_on    = 0.3
@@ -25,7 +25,7 @@ def main():
  
         while (True):
             
-            time.sleep(time_pause)
+            sleep(time_pause)
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
