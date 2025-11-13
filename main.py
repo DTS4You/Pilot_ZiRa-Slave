@@ -1,7 +1,7 @@
 ######################################################
 ### Projekt: Pilot-ZiRa ---Slave---                ###
 ### Version: 1.01                                  ###
-### Datum  : 05.10.2025                            ###
+### Datum  : 13.11.2025                            ###
 ######################################################
 #from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
