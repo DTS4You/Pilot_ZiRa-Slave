@@ -5,7 +5,7 @@
 ######################################################
 #from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
-from time import sleep                                                 # type: ignore
+from time import sleep                                       # type: ignore
 
 TIME_LOOP = 0.3
 
