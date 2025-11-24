@@ -32,7 +32,6 @@ def main():
     print("=== End of Main ===")
 
 # ==============================================================================
-# ==============================================================================
     
 # ###############################################################################
 # ### Main                                                                    ###
@@ -41,19 +40,7 @@ def main():
 if __name__ == "__main__":
 
     print("=== Pilot-ZiRa-Slave ===")
-    if MyModule.inc_i2c:
-        print("Wird geladen -> Modul I2C")
-        import libs.module_i2c as MyGPIO
-        #print("I2C -> Setup")
-        MyGPIO.i2c_setup()
-        ### Test ###
-        print("I2C -> SetOutput")
-        MyGPIO.i2c_write(0,True)
-        time.sleep(0.5)
-        MyGPIO.i2c_write(0,False)
-    else:
-        print("Nicht genutzt -> Modul I2C")
-
+    
     if MyModule.inc_ws2812:
         print("Wird geladen -> Modul WS2812")
         import libs.module_ws2812_v2 as MyWS2812         # Modul WS2812  -> WS2812-Ansteuerung
@@ -69,27 +56,6 @@ if __name__ == "__main__":
     else:
         print("Nicht genutzt -> Modul WS2812")
 
-    if MyModule.inc_decoder:
-        print("Decode -> Load-Module")
-        import libs.module_decode as MyDecode
-        #print("Decode -> Setup")
-        MyDecode.decode_setup()
-        ### Test ###
-        #print("Decode -> Test")
-        #MyDecode.decode_input("Test")
-    else:
-        print("Decode -> nicht vorhanden")
-
-    if MyModule.inc_serial:
-        print("Serial-COM -> Load-Module")
-        import libs.module_serial as MySerial
-        #print("Serial-Con -> Setup")
-        MySerial.sercon_setup()
-        ### Test ###
-        #print("Serial-Con -> Test")
-        #MySerial.sercon_write_out("Start Test")
-    else:
-        print("Serial-COM -> nicht vorhanden")
 
     main()      # Start Main $$$
 
