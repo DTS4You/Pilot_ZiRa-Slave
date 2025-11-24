@@ -19,10 +19,17 @@ def main():
     
     try:
         print("Start Main Loop")
+
+        xio = MyXIO.XIO("INPUT")
  
         while (True):
             
+            print(hex(xio.read_io()))
+
+            MyWS2812.set_led_obj(3, "def")
+            
             sleep(TIME_LOOP)
+
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
@@ -56,6 +63,11 @@ if __name__ == "__main__":
     else:
         print("Nicht genutzt -> Modul WS2812")
 
+    if MyModule.inc_xio:
+        print("XIO -> Load-Module")
+        import libs.module_xio as MyXIO
+    else:
+        print("XIO -> nicht vorhanden")
 
     main()      # Start Main $$$
 
