@@ -47,7 +47,8 @@ def anim_all(stripes):
 
 def reset_anim(stripes):
     for led in stripes:
-        led.anim_count = 0
+        led.anim_count  = 0
+        led.anim_offset = 0
 
 def show_all(stripes):
     for led in stripes:
@@ -66,14 +67,14 @@ def main():
 
         xio = MyXIO.XIO("INPUT")
 
-        led_1 = MyWS2812.LED_STRIP(NUMPIX_1, 0, 2, COLOR_RED, COLOR_RED, COLOR_DEFAULT, True, "Mask")          # Nutzwärme Austritt
-        led_2 = MyWS2812.LED_STRIP(NUMPIX_2, 1, 3, COLOR_YELLOW, COLOR_YELLOW, COLOR_DEFAULT, True, "Mask")    # Nutzwärem Eintritt
-        led_3 = MyWS2812.LED_STRIP(NUMPIX_3, 2, 4, COLOR_RED, COLOR_YELLOW, COLOR_DEFAULT, True, "Mask")       # Kondensator
-        led_4 = MyWS2812.LED_STRIP(NUMPIX_4, 3, 5, COLOR_BLUE, COLOR_BLUE, COLOR_DEFAULT, True, "Mask")        # Abwärme Austritt
-        led_5 = MyWS2812.LED_STRIP(NUMPIX_5, 4, 6, COLOR_YELLOW, COLOR_BLUE, COLOR_DEFAULT, False, "Mask")     # Drossel           -> Richtung anpassen
-        led_6 = MyWS2812.LED_STRIP(NUMPIX_6, 5, 7, COLOR_BLUE, COLOR_YELLOW, COLOR_DEFAULT, True, "Mask")      # Verdampfer
-        led_7 = MyWS2812.LED_STRIP(NUMPIX_7, 6, 8, COLOR_YELLOW, COLOR_YELLOW, COLOR_DEFAULT, False, "Mask")   # Abwärme Eintritt  -> Richtung anpassen
-        led_8 = MyWS2812.LED_STRIP(NUMPIX_8, 7, 9, COLOR_YELLOW, COLOR_RED, COLOR_DEFAULT, True, "Mask")       # Kompressor 1 und Kompressor 2
+        led_1 = MyWS2812.LED_STRIP(NUMPIX_1, 0, 2, COLOR_RED, COLOR_RED, COLOR_DEFAULT, True, 2)          # Nutzwärme Austritt
+        led_2 = MyWS2812.LED_STRIP(NUMPIX_2, 1, 3, COLOR_YELLOW, COLOR_YELLOW, COLOR_DEFAULT, True, 2)    # Nutzwärem Eintritt
+        led_3 = MyWS2812.LED_STRIP(NUMPIX_3, 2, 4, COLOR_RED, COLOR_YELLOW, COLOR_DEFAULT, True, 2)       # Kondensator
+        led_4 = MyWS2812.LED_STRIP(NUMPIX_4, 3, 5, COLOR_BLUE, COLOR_BLUE, COLOR_DEFAULT, True, 2)        # Abwärme Austritt
+        led_5 = MyWS2812.LED_STRIP(NUMPIX_5, 4, 6, COLOR_YELLOW, COLOR_BLUE, COLOR_DEFAULT, False, 2)     # Drossel           -> Richtung anpassen
+        led_6 = MyWS2812.LED_STRIP(NUMPIX_6, 5, 7, COLOR_BLUE, COLOR_YELLOW, COLOR_DEFAULT, True, 2)      # Verdampfer
+        led_7 = MyWS2812.LED_STRIP(NUMPIX_7, 6, 8, COLOR_YELLOW, COLOR_YELLOW, COLOR_DEFAULT, False, 2)   # Abwärme Eintritt  -> Richtung anpassen
+        led_8 = MyWS2812.LED_STRIP(NUMPIX_8, 7, 9, COLOR_YELLOW, COLOR_RED, COLOR_DEFAULT, True, 2)       # Kompressor 1 und Kompressor 2
 
         all_leds = [led_1, led_2, led_3, led_4, led_5, led_6, led_7, led_8]
 
