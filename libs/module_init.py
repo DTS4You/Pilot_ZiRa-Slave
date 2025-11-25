@@ -66,8 +66,8 @@ class Global_WS2812:
     color_half          = (110,  2,  2)
     color_blink_on      = (255, 20, 20)
     color_blink_off     = (  0,  0,  5)
-    color_red           = ( 80,  0,  0)
-    color_green         = (  0, 80,  0)
+    color_red           = ( 50,  0,  0)
+    color_green         = (  0, 50,  0)
 
 
 class Global_Default:
