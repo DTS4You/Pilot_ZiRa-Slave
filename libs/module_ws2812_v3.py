@@ -5,12 +5,7 @@
 import time
 from libs.neopixel import Neopixel
 
-color_off       = (  0,  0,  0)
-color_red       = ( 80,  0,  0)
-color_green     = (  0, 80,  0)
-color_blue      = (  0,  0, 80)
-color_yellow    = ( 50, 50,  0)
-color_default   = (  0,  0,  2)
+
 
 
 class LED_STRIP:
@@ -82,19 +77,36 @@ class LED_STRIP:
         self.anim_step()
 
 
+# -----------------------------------------------------------------------------
 
-led_1 = LED_STRIP(20, 0, 2, color_red, color_yellow, True, "Mask")
+def main():
+
+    color_off       = (  0,  0,  0)
+    color_red       = ( 80,  0,  0)
+    color_green     = (  0, 80,  0)
+    color_blue      = (  0,  0, 80)
+    color_yellow    = ( 50, 50,  0)
+    color_default   = (  0,  0,  2)
+    
+    led_1 = LED_STRIP(20, 0, 2, color_red, color_yellow, True, "Mask")
 
 
-#led_1.strip_fill()
-led_1.led_gradient()
-led_1.led_show()
-
-time.sleep(2)
-
-while(True):
-    led_1.make_anim()
+    #led_1.strip_fill()
+    led_1.led_gradient()
     led_1.led_show()
-    time.sleep(0.1)
 
+    time.sleep(2)
 
+    while(True):
+        led_1.make_anim()
+        led_1.led_show()
+        time.sleep(0.1)
+
+# End
+
+#------------------------------------------------------------------------------
+#--- Main
+#------------------------------------------------------------------------------
+
+if __name__ == "__main__":
+    main()

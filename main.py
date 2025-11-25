@@ -9,10 +9,12 @@ from time import sleep                                       # type: ignore
 
 TIME_LOOP = 0.3
 
-def set_led_to_color(color):
-    for i in range(8):
-        MyWS2812.set_led_obj(i, color)
-
+COLOR_OFF       = (  0,  0,  0)
+COLOR_RED       = ( 80,  0,  0)
+COLOR_GREEN     = (  0, 80,  0)
+COLOR_BLUE      = (  0,  0, 80)
+COLOR_YELLOW    = ( 50, 50,  0)
+COLOR_DEFAULT   = (  0,  0,  2)
 
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
@@ -27,18 +29,20 @@ def main():
 
         xio = MyXIO.XIO("INPUT")
 
-        set_led_to_color("def")
+        led_1 = MyWS2812.LED_STRIP(20, 0, 2, COLOR_RED, COLOR_YELLOW, True, "Mask")
+
+        led_1.led_gradient()
+        led_1.led_show()
+
  
         while (True):
             
             print(hex(xio.read_io()))
 
             if xio.get_bit(0):
-                set_led_to_color("green")
+                pass
             else:
-                set_led_to_color("red")
-
-            #MyWS2812.set_led_obj(3, "def")
+                pass
             
             sleep(TIME_LOOP)
 
@@ -62,16 +66,7 @@ if __name__ == "__main__":
     
     if MyModule.inc_ws2812:
         print("Wird geladen -> Modul WS2812")
-        import libs.module_ws2812_v2 as MyWS2812         # Modul WS2812  -> WS2812-Ansteuerung
-        #print("WS2812 -> Setup")
-        MyWS2812.setup_ws2812()
-        ### Test ###
-        print("WS2812 -> Run self test")
-        MyWS2812.self_test()
-        #print("WS2812 -> Blink Test")
-        #MyWS2812.do_blink_test()
-        #print("WS2812 -> Dot-Test")
-        #MyWS2812.do_dot_test()
+        import libs.module_ws2812_v3 as MyWS2812
     else:
         print("Nicht genutzt -> Modul WS2812")
 
