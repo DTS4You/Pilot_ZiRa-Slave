@@ -17,7 +17,7 @@ COLOR_RED_2     = ( 20,  0,  0)
 COLOR_GREEN     = (  0, 70,  0)
 COLOR_GREEN_2   = (  0, 20,  0)
 COLOR_BLUE      = (  0,  0, 70)
-COLOR_YELLOW    = ( 50, 50,  0)
+COLOR_YELLOW    = ( 40, 40,  0)
 COLOR_DEFAULT   = (  0,  0,  2)
 
 NUMPIX_1        = 26        # Anz. LEDs im 1. Stripe -> 
