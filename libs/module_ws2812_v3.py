@@ -9,12 +9,12 @@ from libs.neopixel import Neopixel
 
 
 class LED_STRIP:
-    def __init__(self, num_pix, pio_num, pin_num, color_start, color_stop, direction, anim_type, transfer_mode="PUT"):
+    def __init__(self, num_pix, pio_num, pin_num, color_start, color_stop, color_default, direction, anim_type, transfer_mode="PUT"):
         self.num_pix        = num_pix 
         self.pio_num        = pio_num 
         self.pin_num        = pin_num
         self.transfer       = transfer_mode
-        self.color_default  = ( 0, 0, 5)
+        self.color_default  = color_default
         self.color_start    = color_start
         self.color_stop     = color_stop
         self.color_value    = ( 40, 40, 40)
