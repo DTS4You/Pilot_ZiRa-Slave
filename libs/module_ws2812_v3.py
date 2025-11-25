@@ -18,6 +18,7 @@ class LED_STRIP:
         self.color_start    = color_start
         self.color_stop     = color_stop
         self.color_value    = ( 40, 40, 40)
+        self.color_off      = (  0,  0,  0)
         self.anim_count     = 0
         self.anim_enable    = True
         self.anim_type      = anim_type
@@ -39,7 +40,7 @@ class LED_STRIP:
         self.strip.set_pixel(self.anim_count, self.color_value)
 
     def led_fill(self):
-        self.strip.fill(self.color_default)
+        self.strip.fill(self.color_value)
 
     def led_gradient(self):
         self.strip.set_pixel_line_gradient(0, self.num_pix - 1, self.color_start, self.color_stop)
@@ -63,9 +64,9 @@ class LED_STRIP:
     def mask_stripe(self):
         self.led_gradient()
         if self.anim_count > 0:
-            self.strip.set_pixel_line(0, self.anim_count - 1 , color_default)
+            self.strip.set_pixel_line(0, self.anim_count - 1 , self.color_default)
         if self.anim_count < self.num_pix - self.offset - 1:
-            self.strip.set_pixel_line(self.anim_count + self.offset, self.num_pix, color_default)
+            self.strip.set_pixel_line(self.anim_count + self.offset, self.num_pix, self.color_default)
     
     def make_anim(self):
         if self.anim_type == "Pixel":
