@@ -9,7 +9,7 @@ from libs.neopixel import Neopixel
 
 
 class LED_STRIP:
-    def __init__(self, num_pix, pio_num, pin_num, color_start, color_stop, color_default, direction, anim_type, transfer_mode="PUT"):
+    def __init__(self, num_pix, pio_num, pin_num, color_start, color_stop, color_default, direction, anim_type, brightness, transfer_mode="PUT"):
         self.num_pix        = num_pix 
         self.pio_num        = pio_num 
         self.pin_num        = pin_num
@@ -26,6 +26,7 @@ class LED_STRIP:
         self.anim_type      = anim_type
         self.direction      = direction
         self.offset         = 8
+        self.bright         = brightness
 
         self.led_setup()
 
@@ -83,7 +84,7 @@ class LED_STRIP:
     def dim_stripes(self):
         for i in range(0,self.num_pix, 4):
             if i + self.anim_pattern < self.num_pix: 
-                self.strip.set_pixel(i + self.anim_offset, self.strip.get_pixel(i), 20)
+                self.strip.set_pixel(i + self.anim_offset, self.strip.get_pixel(i), self.bright)
 
     def make_anim(self):
         if self.anim_type == 0:
@@ -109,7 +110,7 @@ def main():
     COLOR_YELLOW    = ( 50, 50,  0)
     COLOR_DEFAULT   = (  0,  0,  2)
     
-    led_1 = LED_STRIP(20, 0, 2, COLOR_RED, COLOR_YELLOW, COLOR_DEFAULT, True, 2)
+    led_1 = LED_STRIP(20, 0, 2, COLOR_RED, COLOR_YELLOW, COLOR_DEFAULT, True, 2, 30)
 
 
     led_1.led_gradient()
