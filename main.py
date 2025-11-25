@@ -12,11 +12,11 @@ TIME_LOOP   = 0.1
 TIME_DELAY  = 10
 
 COLOR_OFF       = (  0,  0,  0)
-COLOR_RED       = ( 80,  0,  0)
+COLOR_RED       = ( 70,  0,  0)
 COLOR_RED_2     = ( 20,  0,  0)
-COLOR_GREEN     = (  0, 80,  0)
+COLOR_GREEN     = (  0, 70,  0)
 COLOR_GREEN_2   = (  0, 20,  0)
-COLOR_BLUE      = (  0,  0, 80)
+COLOR_BLUE      = (  0,  0, 70)
 COLOR_YELLOW    = ( 50, 50,  0)
 COLOR_DEFAULT   = (  0,  0,  2)
 
