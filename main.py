@@ -85,8 +85,10 @@ def main():
         wait_1 = 0
         wait_2 = 0
 
+        set_all_stripes(all_leds, COLOR_DEFAULT)
+        
         while (True):
-            
+            print(hex(xio.read_io()))
             io_state = xio.read_io()
             if io_state == 0:
                 wait_1 = 0
