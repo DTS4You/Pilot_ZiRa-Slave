@@ -1,36 +1,42 @@
 class PLC:
     def __init__(self):
-        self.state = 'STOP'                 # Zustand der Steuerung
-        self.step_value = 0                 # Ablaufsteuerung Schrittwert
+        self.state_now      = 'NONE'           # Aktueller Zustand der Steuerung
+        self.state_last     = 'NONE'           # Letzter Zustand der Steuerung
+        self.state_change   = False
+        self.autostart      = False
         self.step_max = 5                   # Maximale Schritte Anzahl
         self.inputs = {                     # Eingänge (z.B. Taster, Sensoren)
-            'start': False,
-            'stop': False,
-            'sensor': False
+            'TASTER_HINTEN': False,
+            'TASTER_VORNE': False,
+            'KONTAKT_ROT': False,
+            'KONTAKT_GRUEN': False
         }
         self.outputs = {                    # Ausgänge (z.B. Motor, Relais)
-            'motor': False,
-            'alarm': False
+            'TASTER_HINTRN_ROT': False,
+            'TASTER_HINTEN_GRUEN': False,
+            'TASTER_VORNE_ROT': False,
+            'TASTER_VORNE_GRUEN': False,
+            'KESSEL_LED_1': False,
+            'KESSEL_LED_2': False,
+            'WINDRAD': False,
+            'TUER_KLAPPE': False
         }
 
-    def set_state(self, state='STOP'):
-        if state == 'START':
-            self.state = 'RUN'
-            return self.state
-        if state == 'RUN':
-            self.state = 'RUN'
-            return self.state
-        self.state = 'STOP'
-        return self.state
-    
+        self.setup_state()
+
+    def setup_state(self):
+        if self.autostart:
+            self.state_now = 'START'
+            self.state_change = True
 
     def read_input(self):
-        # Eingänge vom Benutzer simulieren
+        # Eingänge einlesen und auf Merker setzen
         self.inputs['start'] = input("Start-Taster drücken? (ja/nein): ").lower() == 'ja'
         self.inputs['stop'] = input("Stop-Taster drücken? (ja/nein): ").lower() == 'ja'
         self.inputs['sensor'] = input("Sensor aktiviert? (ja/nein): ").lower() == 'ja'
     
     def write_output(self):
+        # Merker auslesen und auf Ausgänge setzen
         print(f"Motor: {'An' if self.outputs['motor'] else 'Aus'}")
         print(f"Alarm: {'An' if self.outputs['alarm'] else 'Aus'}")
         print(f"Aktueller Zustand: {self.state}")
@@ -42,8 +48,10 @@ class PLC:
         print("-" * 30)
 
     def logic(self):
-        if self.state == 'RUN':
-            print("PLC -> RUN")
+        if self.state_now == 'RESET' and self.state_last == 'RESET':
+            # First RUN after Start PLC
+            print("PLC -> Einschaltwischer")
+            self.state_now = 'DEFAULT'
 
 def main():
     state = 'RUN'
